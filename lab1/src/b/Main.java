@@ -1,5 +1,3 @@
-package b;
-
 import java.util.*;
 import java.io.File;
 

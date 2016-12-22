@@ -1,3 +1,5 @@
+package b;
+
 import java.util.*;
 
 public class MySortedArray<E extends Comparable<? super E>> 

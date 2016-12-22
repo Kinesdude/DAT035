@@ -1,3 +1,5 @@
+package b;
+
 import java.util.*;
 import java.io.File;
 
@@ -13,7 +15,7 @@ public class Main{
 				list.add(input.nextInt());	
 			}
 
-			MySortedIntArray array = new MySortedIntArray(list);
+			MySortedArray<Integer> array = new MySortedArray<Integer>(list);
 			System.out.println(array.member(element));
 		}
 		catch(Exception e){
