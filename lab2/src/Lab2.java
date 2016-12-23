@@ -25,9 +25,9 @@ public class Lab2 {
 	 * @throws MalformedBid If the bid cannot be parsed.
 	 */
 
-	public static Bid parseBid(String s) throws MalformedBid {
-		Matcher m = Pattern.compile(
-				"\\s*(\\S+)\\s+" +
+public static Bid parseBid(String s) throws MalformedBid {
+	Matcher m = Pattern.compile(
+			"\\s*(\\S+)\\s+" +
 				"(?:(K|S)\\s+(\\d+)|(NS|NK)\\s+(\\d+)\\s+(\\d+))" +
 				"\\s*").matcher(s);
 
