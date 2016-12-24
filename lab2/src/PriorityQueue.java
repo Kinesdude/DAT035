@@ -53,6 +53,20 @@ public class PriorityQueue<E>{
 		return "test";
 	}
 
+	public boolean replace(E e1, E e2){
+		if(map.get(e1) != null){
+			int index = map.get(e1);
+			map.remove(e1);
+			map.put(e2,index);
+			array.set(index,e2);
+			percolateDown(index);
+			percolateUp(index);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
 	//private methods
 	
