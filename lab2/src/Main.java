@@ -10,6 +10,7 @@ public class Main{
 		Bid bid6 = new Bid("n",5);
 		Bid bid7 = new Bid("j",8);
 		Bid bid8 = new Bid("m",9);
+		Bid bid9 = new Bid("m",9);
 		PriorityQueue<Bid> queue = new PriorityQueue<>(new BuyerComparator());
 		queue.add(bid1);
 		queue.add(bid2);
@@ -19,7 +20,12 @@ public class Main{
 		queue.add(bid6);
 		queue.add(bid7);
 		queue.add(bid8);
+		queue.add(bid9);
+		
+		printBidHeapArray(queue.getArray());
+
 		System.out.println("Size: " + queue.getSize());
+		System.out.println("Index: " + queue.index(bid1));
 		System.out.println(queue.peek().getName());
 		queue.poll();
 		System.out.println(queue.peek().getName());
@@ -31,4 +37,20 @@ public class Main{
 
 
 	}
+
+	public static void printBidHeapArray(ArrayList<Bid> bids){
+
+		System.out.println("Printing heap array:");
+
+		int downShift = 1;
+		for(int i = 1 ; i < bids.size() ; i++){
+			if(i == downShift){
+				downShift *= 2;
+				System.out.println();
+			}
+			System.out.print(bids.get(i).getPrice() + " ");
+		}
+		System.out.println();
+	}
+
 }

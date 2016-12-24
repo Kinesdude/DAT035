@@ -18,6 +18,7 @@ public class PriorityQueue<E>{
 	public void add(E e){
 		System.out.println("---Adding----");
 		array.add(e);
+		map.put(e,getSize());
 		percolateUp(getSize());
 	}
 
@@ -30,7 +31,7 @@ public class PriorityQueue<E>{
 
 	public E poll(){
 		E priorityOne = array.get(1);
-		array.set(1, array.get(getSize()));
+		replace(1,getSize());
 		if(getSize() != 1)
 			percolateDown(1);
 		return priorityOne;
@@ -59,7 +60,7 @@ public class PriorityQueue<E>{
 	private void percolateDown(int hole){
 		//Index 0 is used for a temporary storage for the element
 		//that will percolate down 
-		array.set(0,array.get(hole));
+		replace(0,hole);
 
 		while(hole * 2 <= getSize()){
 			int child = hole * 2;
@@ -68,32 +69,40 @@ public class PriorityQueue<E>{
 				child++;
 			}
 			if(comp.compare(array.get(child),array.get(0)) > 0){
-				array.set(hole,array.get(child));	
+				replace(hole,child);	
 			}
 			else{
 				break;
 			}
 			hole = child;
 		}
-		array.set(hole, array.get(0));
+		replace(hole,0);
 	}
 
 	private void percolateUp(int hole){
 		//Index 0 is used for a temporary storage for the element
 		//that will percolate up 
-		array.set(0,array.get(hole));
+		replace(0,hole);
 		
 		while(hole/2 != 0 && comp.compare(array.get(0) , array.get(hole/2)) > 0){
-			array.set(hole,array.get(hole/2));
+			replace(hole,hole/2);
 			hole /= 2;
 			System.out.println("Percolate up");
 		}
-		array.set(hole, array.get(0));
+		replace(hole,0);
 	}
 
 	private void replace(int a, int b){
 		array.set(a, array.get(b));
-		//map.put(array.get(b), a);
+		map.put(array.get(b), a);
+	}
+
+	public int index(E e){
+		return map.get(e);
+	}
+
+	public ArrayList<E> getArray(){
+		return this.array;
 	}
 
 }
