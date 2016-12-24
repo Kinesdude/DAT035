@@ -5,11 +5,13 @@ public class PriorityQueue<E>{
 
 	private ArrayList<E> array;
 	private Comparator<E> comp;
+	private HashMap<E,Integer> map;
 	private static final int DEFAULT_CAPACITY = 10;
 	
 	public PriorityQueue(Comparator comp){
-		this.comp = comp;
 		this.array = new ArrayList<E>(DEFAULT_CAPACITY);
+		this.comp = comp;
+		map = new HashMap<>();
 		array.add(null);
 	}
 
@@ -81,12 +83,16 @@ public class PriorityQueue<E>{
 		//that will percolate up 
 		array.set(0,array.get(hole));
 		
-		while(hole/2 != 0 && comp.compare(array.get(0),
-										  array.get(hole/2)) > 0){
+		while(hole/2 != 0 && comp.compare(array.get(0) , array.get(hole/2)) > 0){
 			array.set(hole,array.get(hole/2));
 			hole /= 2;
 			System.out.println("Percolate up");
 		}
 		array.set(hole, array.get(0));
 	}
+
+	private void replace(int a, int b){
+		array.set(a, array.get(b));
+	}
+
 }
