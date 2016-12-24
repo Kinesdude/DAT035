@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class BuyerComparator implements Comparator<Bid>{
 
 	public int compare(Bid b1, Bid b2){
