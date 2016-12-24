@@ -14,6 +14,7 @@ public class PriorityQueue<E>{
 	}
 
 	public void add(E e){
+		System.out.println("---Adding----");
 		array.add(e);
 		percolateUp(getSize());
 	}
@@ -45,6 +46,10 @@ public class PriorityQueue<E>{
 		return array.size() - 1;
 	}
 
+	public String toString(){
+		return "test";
+	}
+
 
 	//private methods
 	
@@ -53,12 +58,20 @@ public class PriorityQueue<E>{
 		//Index 0 is used for a temporary storage for the element
 		//that will percolate down 
 		array.set(0,array.get(hole));
-		
-		while(hole * 2 <= getSize() && comp.compare(
-										array.get(hole*2),
-									   	array.get(hole)) > 0){
-			array.set(hole,array.get(hole*2));	
-			hole *= 2;
+
+		while(hole * 2 <= getSize()){
+			int child = hole * 2;
+
+			if(child != getSize() && comp.compare( array.get(child + 1) , array.get(child) ) > 0){
+				child++;
+			}
+			if(comp.compare(array.get(child),array.get(0)) > 0){
+				array.set(hole,array.get(child));	
+			}
+			else{
+				break;
+			}
+			hole = child;
 		}
 		array.set(hole, array.get(0));
 	}
@@ -68,10 +81,11 @@ public class PriorityQueue<E>{
 		//that will percolate up 
 		array.set(0,array.get(hole));
 		
-		while(hole/2 != 0 && comp.compare(array.get(hole),
+		while(hole/2 != 0 && comp.compare(array.get(0),
 										  array.get(hole/2)) > 0){
 			array.set(hole,array.get(hole/2));
 			hole /= 2;
+			System.out.println("Percolate up");
 		}
 		array.set(hole, array.get(0));
 	}
