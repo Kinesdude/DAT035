@@ -16,7 +16,7 @@ public class PriorityQueue<E>{
 	}
 
 	public void add(E e){
-		System.out.println("---Adding----");
+		//System.out.println("---Adding----");
 		array.add(e);
 		map.put(e,getSize());
 		percolateUp(getSize());
@@ -68,9 +68,6 @@ public class PriorityQueue<E>{
 		}
 	}
 
-	//private methods
-	
-
 	private void percolateDown(int hole){
 		//Index 0 is used for a temporary storage for the element
 		//that will percolate down 
@@ -101,7 +98,7 @@ public class PriorityQueue<E>{
 		while(hole/2 != 0 && comp.compare(array.get(0) , array.get(hole/2)) > 0){
 			replace(hole,hole/2);
 			hole /= 2;
-			System.out.println("Percolate up");
+			//System.out.println("Percolate up");
 		}
 		replace(hole,0);
 	}
