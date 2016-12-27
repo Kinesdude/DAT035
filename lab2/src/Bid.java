@@ -1,18 +1,20 @@
 public class Bid{
 	private String name;
+	private String operation;
 	private int price;
 	private Integer oldPrice;
 
 	public Bid(Bid bid){
-		this(bid.getName(),bid.getPrice());				
+		this(bid.getName(),bid.getOperation(),bid.getPrice());	
 	}
 
-	public Bid(String name, int price){
-		this(name,null,price);
+	public Bid(String name, String operation, int price){
+		this(name,operation,price,null);
 	}
 
-	public Bid(String name, Integer oldPrice, int price){
+	public Bid(String name, String operation, int price, Integer oldPrice){
 		this.name = name;
+		this.operation = operation;
 		this.price = price;
 		this.oldPrice = oldPrice;
 	}
@@ -21,7 +23,9 @@ public class Bid{
 		if(o instanceof Bid){
 			Bid bid = (Bid)o;
 			return (bid.getName().equals(this.name)  &&  
-					bid.getPrice() == this.price);
+					bid.getPrice() == this.price); //&&
+					//bid.getOperation().equals(this.operation) &&
+					//bid.getOldPrice().equals();
 		}	
 		return false;
 	}
@@ -29,7 +33,9 @@ public class Bid{
 	public int hashCode(){
 		int hashCode = 1;
 		hashCode = hashCode * 37 + this.name.hashCode();
-		hashCode = hashCode * 41 + this.price;
+		hashCode = hashCode * 43 + this.price;
+		//hashCode = hashCode * 41 + this.operation.hashCode();
+		//hashCode = hashCode * 47 + this.oldPrice == null ? 0 : this.oldPrice;
 		return hashCode;
 	}
 
@@ -43,5 +49,9 @@ public class Bid{
 	
 	public boolean isNew(){
 		return this.oldPrice == null;
+	}
+
+	public String getOperation(){
+		return this.operation;	
 	}
 }

@@ -2,17 +2,17 @@ import java.util.*;
 
 public class Main{
 	public static void main(String[] args){	
-		Bid bid1 = new Bid("a",1);
-		Bid bid2 = new Bid("c",3);
-		Bid bid3 = new Bid("d",4);
-		Bid bid4 = new Bid("A",8);
-		Bid bid5 = new Bid("k",6);
-		Bid bid6 = new Bid("n",5);
-		Bid bid7 = new Bid("j",8);
-		Bid bid8 = new Bid("m",9);
-		Bid bid9 = new Bid("m",9);
-		Bid bid10 = new Bid("ko",10);
-		PriorityQueue<Bid> queue = new PriorityQueue<>(new BuyerComparator());
+		Bid bid1 = new Bid("a","K",1);
+		Bid bid2 = new Bid("c","K",3);
+		Bid bid3 = new Bid("d","K",4);
+		Bid bid4 = new Bid("A","K",8);
+		Bid bid5 = new Bid("k","K",6);
+		Bid bid6 = new Bid("n","K",5);
+		Bid bid7 = new Bid("j","K",8);
+		Bid bid8 = new Bid("m","K",9);
+		Bid bid9 = new Bid("m","K",9);
+		Bid bid10 = new Bid("ko","K",10);
+		PriorityQueue<Bid> queue = new PriorityQueue<>(new SellerComparator());
 		queue.add(bid1);
 		queue.add(bid2);
 		queue.add(bid3);
@@ -27,7 +27,7 @@ public class Main{
 
 		System.out.println("Replace 1 by 10: ");
 
-		queue.replace(bid1,bid10);
+		queue.replace(new Bid(bid1),bid10);
 
 		printBidHeapArray(queue.getArray());
 
