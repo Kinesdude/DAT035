@@ -8,7 +8,7 @@ public class PriorityQueue<E>{
 	private HashMap<E,Integer> map;
 	private static final int DEFAULT_CAPACITY = 10;
 	
-	public PriorityQueue(Comparator comp){
+	public PriorityQueue(Comparator<E> comp){
 		this.array = new ArrayList<E>(DEFAULT_CAPACITY);
 		this.comp = comp;
 		map = new HashMap<>();

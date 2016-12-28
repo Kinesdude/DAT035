@@ -13,8 +13,14 @@ public class Lab2 {
 	 */
 
 	public static void trade(List<Bid> bids) {
-		// Implement this yourselves. Note that this file does not
-		// define a Bid class.
+		PriorityQueue buyerQueue = new PriorityQueue(new BuyerComparator());
+		PriorityQueue sellerQueue = new PriorityQueue(new SellerComparator());
+		
+		for(int i = 0 ; i < bids.size() ; i++){
+			switch(bids.get(i).getOperation()){
+
+			}	
+		}
 	}    
 
 	/**
@@ -37,12 +43,15 @@ public static Bid parseBid(String s) throws MalformedBid {
 				// m.group(4): NK or NS.
 				// m.group(5): Old value.
 				// m.group(6): New value.
-				return new Bid(m.group(1),m.group(4),m.group(6),m.group(5));  // Incomplete code.
+				return new Bid(m.group(1),m.group(4),
+							   Integer.parseInt(m.group(6)),
+							   Integer.parseInt(m.group(5)));
 			} else {
 				// m.group(1): The name of the buyer/seller.
 				// m.group(2): K or S.
 				// m.group(3): The value.
-				return new Bid(m.group(1),m.group(2),m.group(3));  // Incomplete code.
+				return new Bid(m.group(1),m.group(2),
+							   Integer.parseInt(m.group(3)));
 			}
 		} else {
 			throw new MalformedBid(s);
