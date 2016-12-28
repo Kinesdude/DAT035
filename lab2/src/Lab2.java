@@ -37,12 +37,12 @@ public static Bid parseBid(String s) throws MalformedBid {
 				// m.group(4): NK or NS.
 				// m.group(5): Old value.
 				// m.group(6): New value.
-				return new Bid();  // Incomplete code.
+				return new Bid(m.group(1),m.group(4),m.group(6),m.group(5));  // Incomplete code.
 			} else {
 				// m.group(1): The name of the buyer/seller.
 				// m.group(2): K or S.
 				// m.group(3): The value.
-				return new Bid(...);  // Incomplete code.
+				return new Bid(m.group(1),m.group(2),m.group(3));  // Incomplete code.
 			}
 		} else {
 			throw new MalformedBid(s);

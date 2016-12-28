@@ -13,6 +13,7 @@ public class Main{
 		Bid bid9 = new Bid("m","K",9);
 		Bid bid10 = new Bid("ko","K",10);
 		PriorityQueue<Bid> queue = new PriorityQueue<>(new SellerComparator());
+		//PriorityQueue<Bid> queue = new PriorityQueue<>(new BuyerComparator());
 		queue.add(bid1);
 		queue.add(bid2);
 		queue.add(bid3);
