@@ -17,8 +17,16 @@ public class Lab2 {
 		PriorityQueue sellerQueue = new PriorityQueue(new SellerComparator());
 		
 		for(int i = 0 ; i < bids.size() ; i++){
-			switch(bids.get(i).getOperation()){
-
+			String operation = bids.get(i).getOperation();
+			switch(operation){
+				case "K":
+					break;
+				case "S":
+					break;
+				case "NK":
+					break;
+				case "NS":
+					break;
 			}	
 		}
 	}    
