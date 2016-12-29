@@ -1,0 +1,9 @@
+Yolo K 30
+Yolo1 K 31
+Yolo2 K 32
+Yolo3 K 33
+Yolo4 K 34
+Solo1 S 34
+Solo2 S 36
+Solo3 S 32
+Yolo7 K 36
