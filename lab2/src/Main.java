@@ -11,9 +11,9 @@ public class Main{
 		Bid bid7 = new Bid("j","K",8);
 		Bid bid8 = new Bid("m","K",9);
 		Bid bid9 = new Bid("m","K",9);
-		Bid bid10 = new Bid("ko","K",10);
-		PriorityQueue<Bid> queue = new PriorityQueue<>(new SellerComparator());
-		//PriorityQueue<Bid> queue = new PriorityQueue<>(new BuyerComparator());
+		Bid bid10 = new Bid("a","K",10,1);
+		//PriorityQueue<Bid> queue = new PriorityQueue<>(new SellerComparator());
+		PriorityQueue<Bid> queue = new PriorityQueue<>(new BuyerComparator());
 		queue.add(bid1);
 		queue.add(bid2);
 		queue.add(bid3);
@@ -27,7 +27,7 @@ public class Main{
 		printBidHeapArray(queue.getArray());
 
 		System.out.println("Replace 1 by 10: ");
-		queue.replace(new Bid(bid1),bid10);
+		queue.replace(new Bid(bid10),bid10);
 
 		printBidHeapArray(queue.getArray());
 

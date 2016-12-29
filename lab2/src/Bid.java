@@ -5,7 +5,7 @@ public class Bid{
 	private Integer oldPrice;
 
 	public Bid(Bid bid){
-		this(bid.getName(),bid.getOperation(),bid.getPrice());	
+		this(bid.getName(),bid.getOperation(),bid.getOldPrice());	
 	}
 
 	public Bid(String name, String operation, int price){
@@ -58,5 +58,9 @@ public class Bid{
 	public void printBid(){
 		System.out.print(getName() + " " + getPrice());
 		
+	}
+
+	public int getOldPrice(){
+		return this.oldPrice;
 	}
 }

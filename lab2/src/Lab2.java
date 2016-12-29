@@ -61,7 +61,7 @@ public class Lab2 {
 				break;
 			case "NS":
 				if(!sellerQueue.replace(new Bid(bid), bid)){
-					System.out.println();
+					System.out.println("Wrong input!");
 					//exception
 				}
 				break;
