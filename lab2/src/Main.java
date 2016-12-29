@@ -27,10 +27,20 @@ public class Main{
 		printBidHeapArray(queue.getArray());
 
 		System.out.println("Replace 1 by 10: ");
-
 		queue.replace(new Bid(bid1),bid10);
 
 		printBidHeapArray(queue.getArray());
+
+		System.out.println("Tar bort första: ");
+
+		queue.poll();
+
+		printBidHeapArray(queue.getArray());
+
+
+
+
+
 
 		System.out.println("Size: " + queue.getSize());
 		System.out.println("Index: " + queue.index(bid10));

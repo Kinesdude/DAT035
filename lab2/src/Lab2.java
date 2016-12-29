@@ -13,23 +13,79 @@ public class Lab2 {
 	 */
 
 	public static void trade(List<Bid> bids) {
-		PriorityQueue buyerQueue = new PriorityQueue(new BuyerComparator());
-		PriorityQueue sellerQueue = new PriorityQueue(new SellerComparator());
+		PriorityQueue<Bid> buyerQueue = new PriorityQueue<>(new BuyerComparator());
+		PriorityQueue<Bid> sellerQueue = new PriorityQueue<>(new SellerComparator());
 		
 		for(int i = 0 ; i < bids.size() ; i++){
-			String operation = bids.get(i).getOperation();
-			switch(operation){
-				case "K":
-					break;
-				case "S":
-					break;
-				case "NK":
-					break;
-				case "NS":
-					break;
-			}	
+			addBid(bids.get(i), sellerQueue, buyerQueue);
+			handleTransaction(sellerQueue, buyerQueue);
 		}
+		
+		System.out.println("Orderbok:");
+		System.out.print("Säljare: ");
+		printRemainingBids(sellerQueue);
+		System.out.print("Köpare: ");
+		printRemainingBids(buyerQueue);
+
 	}    
+
+	public static void printRemainingBids(PriorityQueue<Bid> queue){
+		int queueSize = queue.getSize();
+		for(int i = 1 ; i < queueSize ; i++){
+			queue.poll().printBid();
+			System.out.print(", ");
+		}
+		if(queue.peek() != null){
+			queue.poll().printBid();
+		}
+		System.out.println();
+
+	}
+
+	public static void addBid(Bid bid, 
+			PriorityQueue<Bid> sellerQueue,
+			PriorityQueue<Bid> buyerQueue){
+
+		switch(bid.getOperation()){
+			case "K":
+				buyerQueue.add(bid);	
+				break;
+			case "S":
+				sellerQueue.add(bid);	
+				break;
+			case "NK":
+				if(!buyerQueue.replace(new Bid(bid), bid)){
+					System.out.println();
+					//exception
+				}
+				break;
+			case "NS":
+				if(!sellerQueue.replace(new Bid(bid), bid)){
+					System.out.println();
+					//exception
+				}
+				break;
+			default:
+				//exception
+				break;
+		}	
+	}
+
+	public static void handleTransaction(PriorityQueue<Bid> sellerQueue,
+										 PriorityQueue<Bid> buyerQueue){
+		Bid sellerBid = sellerQueue.peek();
+		Bid buyerBid = buyerQueue.peek();
+
+		if(buyerBid != null &&
+		   sellerBid != null &&
+		   buyerBid.getPrice() >= sellerBid.getPrice()){
+
+			System.out.println(buyerBid.getName() + " köper från " + 
+							   sellerBid.getName() + " för " + sellerBid.getPrice() + " kr");	
+			sellerQueue.poll();
+			buyerQueue.poll();
+		}
+	}
 
 	/**
 	 * Parses a bid.

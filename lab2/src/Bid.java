@@ -54,4 +54,9 @@ public class Bid{
 	public String getOperation(){
 		return this.operation;	
 	}
+
+	public void printBid(){
+		System.out.print(getName() + " " + getPrice());
+		
+	}
 }

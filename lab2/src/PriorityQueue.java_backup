@@ -20,7 +20,7 @@ public class PriorityQueue<E>{
 		array.add(e);
 		map.put(e,getSize());
 		percolateUp(getSize());
-		//System.out.println("Size: " + getSize());
+		System.out.println("Size: " + getSize());
 	}
 
 	public E peek(){
@@ -31,24 +31,20 @@ public class PriorityQueue<E>{
 	}
 
 	public E poll(){
-		//System.out.println("Size::: " + getSize());
-		if(getSize() != 0){
-			E priorityOne = array.get(1);
-			remove(1);
-			return priorityOne;
-		}
-		else{
-			return null;
-		}
+		E priorityOne = array.get(1);
+		replace(1,getSize());
+		//array.remove(getSize());
+		if(getSize() != 1)
+			percolateDown(1);
+		return priorityOne;
 	}
 
-	private void remove(int index){
-		map.remove(array.get(index));
-		replace(1,getSize());
-		array.remove(getSize());
-		if(getSize() > 1){
-			percolateDown(1);
-		}
+	public void remove(int a){
+		return;
+	}
+
+	public boolean remove(Object o){
+		return false;
 	}
 
 	public int getSize(){
