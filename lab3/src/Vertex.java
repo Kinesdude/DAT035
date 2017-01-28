@@ -2,18 +2,21 @@ import java.util.*;
 
 public class Vertex<T>{
 	private LinkedList<Vertex> adjacent;
-	private LinkedList<Integer> lengths;
+	private LinkedList<Integer> weights;
 	private Vertex predecessor;
 	private T t;
+	private Integer value;
 	
 	public Vertex(T t){
 		this.t = t;
 		this.lengths = new LinkedList<>();
 		this.adjacent = new LinkedList<>(); 
+		this.value = Integer.MAX_VALUE;		
 	}
 
-	public int hashCode(){
-		return t.hashCode();
+	public void addEdge(Vertex v, int weight){
+		adjacent.add(v);	
+		weights.add(weight);
 	}
 
 	public Vertex getPredecessor(){
@@ -24,7 +27,20 @@ public class Vertex<T>{
 		this.predecessor = v;
 	}
 
-	public ListIterator<Vertex> getIterator(){
+	public ListIterator<Vertex> getAdjacentIterator(){
 		return adjacent.listIterator();
 	}	
+
+	public ListIterator<Integer> getWeightsIterator(){
+		return weights.listIterator();
+	}
+
+	public T get(){
+		return this.t;
+	}
+
+	public int hashCode(){
+		return t.hashCode();
+	}
+
 }
