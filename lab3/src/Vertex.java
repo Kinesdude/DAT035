@@ -6,15 +6,16 @@ public class Vertex<T>{
 	private Vertex predecessor;
 	private T t;
 	private Integer value;
+	//private Integer edges; 
 	
 	public Vertex(T t){
 		this.t = t;
-		this.lengths = new LinkedList<>();
+		this.weights = new LinkedList<>();
 		this.adjacent = new LinkedList<>(); 
-		this.value = Integer.MAX_VALUE;		
+		setMaxValue();
 	}
 
-	public void addEdge(Vertex v, int weight){
+	public void addAdjacent(Vertex v, int weight){
 		adjacent.add(v);	
 		weights.add(weight);
 	}
@@ -39,8 +40,36 @@ public class Vertex<T>{
 		return this.t;
 	}
 
+	public void setValue(int value){
+		this.value = value;
+	}
+
+	public int getValue(){
+		return this.value;
+	}
+
+	public void setMaxValue(){
+		this.value = Integer.MAX_VALUE;
+	}
+
 	public int hashCode(){
 		return t.hashCode();
+	}
+
+	public boolean equals(Object o){
+		if(o == null){
+			return false;
+		}	
+
+		if( this == o){
+			return true;
+		}
+
+		if(o instanceof Vertex){
+			Vertex v = (Vertex)o;
+			return this.t.equals(v.t);
+		}
+		return false;
 	}
 
 }
