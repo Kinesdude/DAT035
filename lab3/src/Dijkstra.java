@@ -22,11 +22,11 @@ public class Dijkstra<T>{
 	}	
 
 	public void setDestination(T t){
-		this.destination = new Vertex<T>(t);
+		this.destination = graph.getVertex(t);
 	}
 
 	public void setOrigin(T t){
-		this.origin = new Vertex<T>(t);
+		this.origin = graph.getVertex(t);
 	}
 
 	public int execute(){
@@ -36,7 +36,6 @@ public class Dijkstra<T>{
 		while(vertexQueue.peek() != destination){
 			handleVertex(vertexQueue.poll());			
 		}
-		//reset();
 		return destination.getValue();
 	}
 
@@ -44,16 +43,24 @@ public class Dijkstra<T>{
 		Iterator<Vertex> vertexIterator =  v.getAdjacentIterator(); 
 		Iterator<Integer> weightIterator = v.getWeightIterator();
 
+		//--debugger--
+		System.out.println("Main vertex: " + v.get());
+		//--debugger--
+
 		while(vertexIterator.hasNext()){
 			Vertex v2 = vertexIterator.next();	
-			int weight = v.getWeight() + weightIterator.next();
-			if(!visitedVertices.contains(v2) && weight < v2.getWeight()){
-				//set predecessor
-				//add to v2 to queue
-				//set weight	
+			int weight = v.getValue() + weightIterator.next();
+			
+			//--debugger--
+			System.out.println("Ajacent node: " + v2.get());
+			
+			//--debugger--
+
+			if(!visitedVertices.contains(v2) && weight < v2.getValue()){
+				v2.setPredecessor(v);
+				vertexQueue.add(v2);
+				v2.setValue(weight);
 			}	
-			//Jämföra nya och gamla
-			//ifall, sätt nya värde och predecessor	
 		}
 		visitedVertices.add(v);
 	}
