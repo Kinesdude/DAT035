@@ -11,10 +11,10 @@ public class Graph<T>{
 	public void addEdge(T t1, T t2, int weight){
 		Vertex v1 = getVertex(t1);
 		Vertex v2 = getVertex(t2);
-		v1.addAdjacent(v2);
+		v1.addAdjacent(v2,weight);
 	}
 
-	public void addEdge(Edge e){
+	public void addEdge(Edge<T> e){
 		addEdge(e.getFirst(), e.getSecond(), e.getWeight());
 	}
 
@@ -24,7 +24,7 @@ public class Graph<T>{
 			v = new Vertex<T>(t);
 			map.put(t,v);
 		}
-		return v
+		return v;
 	}
 
 	public Vertex vertex(T t){
@@ -33,7 +33,7 @@ public class Graph<T>{
 
 	public void resetVertexValues(){
 		Iterator<Vertex> vertices = map.values().iterator();
-		if(vertices.hashNext()){
+		if(vertices.hasNext()){
 			vertices.next().setMaxValue();
 		}
 	}	

@@ -3,7 +3,7 @@ public class Edge<T>{
 	private T t2;
 	private int weight;
 
-	public class Edge(T t1, T t2, int weight){
+	public Edge(T t1, T t2, int weight){
 		this.t1 = t1;
 		this.t2 = t2;	
 		this.weight = weight;

@@ -1,4 +1,4 @@
-import java.utils.*;
+import java.util.*;
 
 public class Dijkstra<T>{
 
@@ -12,6 +12,10 @@ public class Dijkstra<T>{
 		this.graph = graph;
 	}
 
+	public void resetVertexValues(){
+		graph.resetVertexValues();
+	}	
+
 	public void setDestination(T t){
 		this.destination = new Vertex<T>(t);
 	}
@@ -21,7 +25,7 @@ public class Dijkstra<T>{
 	}
 
 	public int execute(){
-			
+		return 0;	
 	}
 
 }
