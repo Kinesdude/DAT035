@@ -1,5 +1,8 @@
 import java.util.*;
 
+
+//dont forget to compare Edges it between same vertices and different weights
+
 public class Graph<T>{
 
 	private HashMap<T,Vertex> map;
@@ -34,7 +37,10 @@ public class Graph<T>{
 	public void resetVertexValues(){
 		Iterator<Vertex> vertices = map.values().iterator();
 		if(vertices.hasNext()){
-			vertices.next().setMaxValue();
+			Vertex v = vertices.next();
+			v.setMaxValue();
+			v.setPredecessor(null);
+			//reset.amount.of.edges!for iterator backwards compability
 		}
 	}	
 	

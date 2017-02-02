@@ -32,7 +32,7 @@ public class Vertex<T>{
 		return adjacent.listIterator();
 	}	
 
-	public ListIterator<Integer> getWeightsIterator(){
+	public ListIterator<Integer> getWeightIterator(){
 		return weights.listIterator();
 	}
 
