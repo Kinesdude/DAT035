@@ -5,8 +5,7 @@ import java.util.*;
 
 public class Graph<T>{
 
-	//private HashMap<T,Vertex> map;
-	public HashMap<T,Vertex> map;
+	private HashMap<T,Vertex> map;
 
 	public Graph(){
 		map = new HashMap<>();
