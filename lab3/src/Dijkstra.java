@@ -16,9 +16,9 @@ public class Dijkstra<T>{
 	}
 
 	public void reset(){
-		graph.resetVertexValues();
-		vertexQueue.clear();	
-		visitedVertices.clear();
+		this.graph.resetVertexValues();
+		this.vertexQueue.clear();	
+		this.visitedVertices.clear();
 	}	
 
 	public void setDestination(T t){
@@ -44,7 +44,7 @@ public class Dijkstra<T>{
 		Iterator<Integer> weightIterator = v.getWeightIterator();
 
 		//--debugger--
-		System.out.println("Main vertex: " + v.get());
+		//System.out.println("--Main vertex: " + v.get() + " Value: " + v.getValue());
 		//--debugger--
 
 		while(vertexIterator.hasNext()){
@@ -52,11 +52,15 @@ public class Dijkstra<T>{
 			int weight = v.getValue() + weightIterator.next();
 			
 			//--debugger--
-			System.out.println("Ajacent node: " + v2.get());
+			//System.out.println("Ajacent node: " + v2.get() + " Value: " + v2.getValue());
 			
 			//--debugger--
 
 			if(!visitedVertices.contains(v2) && weight < v2.getValue()){
+				//--Debugger
+				//System.out.println("Setting new value!");
+				//--Debugger
+				
 				v2.setPredecessor(v);
 				vertexQueue.add(v2);
 				v2.setValue(weight);

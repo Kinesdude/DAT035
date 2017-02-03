@@ -5,7 +5,8 @@ import java.util.*;
 
 public class Graph<T>{
 
-	private HashMap<T,Vertex> map;
+	//private HashMap<T,Vertex> map;
+	public HashMap<T,Vertex> map;
 
 	public Graph(){
 		map = new HashMap<>();
@@ -35,11 +36,15 @@ public class Graph<T>{
 	}
 
 	public void resetVertexValues(){
-		Iterator<Vertex> vertices = map.values().iterator();
-		if(vertices.hasNext()){
-			Vertex v = vertices.next();
+		Iterator<Vertex> it= map.values().iterator();
+		while(it.hasNext()){
+			//--Debugger
+			//System.out.println("Resetting value in graph: ");
+			//--Debugger
+
+			Vertex v = it.next();
 			v.setMaxValue();
-			v.setPredecessor(null);
+			//v.setPredecessor(null);
 			//reset.amount.of.edges!for iterator backwards compability
 		}
 	}	

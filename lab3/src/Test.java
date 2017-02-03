@@ -6,7 +6,7 @@ public class Test{
 		Edge<String> e2 = new Edge("A", "C", 4);
 		Edge<String> e3 = new Edge("B", "D", 5);
 		Edge<String> e4 = new Edge("C", "D", 2);
-		Edge<String> e5 = new Edge("B", "C", 1);
+		Edge<String> e5 = new Edge("B", "C", 0);
 
 		Graph<String> graph = new Graph();
 
@@ -20,7 +20,7 @@ public class Test{
 		
 		dij.setOrigin("A");
 		dij.setDestination("D");
-		System.out.println(dij.execute());
-		System.out.println(dij.execute());
+
+		System.out.println("~~~Shortest path length: " + dij.execute());
 	}
 }
