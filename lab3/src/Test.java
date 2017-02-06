@@ -21,6 +21,6 @@ public class Test{
 		dij.setOrigin("A");
 		dij.setDestination("D");
 
-		System.out.println("~~~Shortest path length: " + dij.execute());
+		System.out.println("Shortest path length: " + dij.execute());
 	}
 }
