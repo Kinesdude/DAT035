@@ -10,13 +10,12 @@ public class Test2{
 		graph.addEdge(e3);
 		graph.addEdge(e4);
 		Dijkstra<String> dij = new Dijkstra(graph);
-		dij.setOrigin("A");
-		dij.setDestination("E");
+		dij.computePath("A","E");
+		dij.computePath("A","E");
+		System.out.println(dij.getPathLength());
 		
 		
 
-		dij.execute();
-		dij.execute();
 	}
 }
 

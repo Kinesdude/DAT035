@@ -1,6 +1,7 @@
+import Lab3Help.*;
 import java.util.*;
 
-public class Dijkstra<T>{
+public class Dijkstra<T> implements Path<T>{
 
 	private Graph<T> graph;
 	private PriorityQueue<Vertex> vertexQueue;
@@ -21,22 +22,23 @@ public class Dijkstra<T>{
 		this.visitedVertices.clear();
 	}	
 
-	public void setDestination(T t){
+	private void setDestination(T t){
 		this.destination = graph.getVertex(t);
 	}
 
-	public void setOrigin(T t){
+	private void setOrigin(T t){
 		this.origin = graph.getVertex(t);
 	}
 
-	public int execute(){
+	public void computePath(T from, T to){
+		setOrigin(from);
+		setDestination(to);
 		reset();	
-		vertexQueue.add(origin);
-		origin.setValue(0);
+		vertexQueue.add(this.origin);
+		this.origin.setValue(0);
 		while(vertexQueue.peek() != destination){
 			handleVertex(vertexQueue.poll());			
 		}
-		return destination.getValue();
 	}
 
 	public void handleVertex(Vertex v){
@@ -69,4 +71,11 @@ public class Dijkstra<T>{
 		visitedVertices.add(v);
 	}
 
+	public Iterator<T> getPath(){
+		return null;
+	}
+
+	public int getPathLength(){
+		return this.destination.getValue();
+	}
 }

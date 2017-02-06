@@ -18,9 +18,8 @@ public class Test{
 
 		Dijkstra<String> dij = new Dijkstra(graph);
 		
-		dij.setOrigin("A");
-		dij.setDestination("D");
+		dij.computePath("A", "D");
 
-		System.out.println("Shortest path length: " + dij.execute());
+		System.out.println("Shortest path length: " + dij.getPathLength());
 	}
 }
