@@ -72,7 +72,13 @@ public class Dijkstra<T> implements Path<T>{
 	}
 
 	public Iterator<T> getPath(){
-		return null;
+		Vertex<T> v = this.destination;
+		LinkedList<T> list = new LinkedList();
+		do{
+			list.addFirst(v.get());	
+			v = v.getPredecessor();
+		} while(v.getPredecessor() != null);
+		return list.iterator();
 	}
 
 	public int getPathLength(){
