@@ -11,6 +11,20 @@ public class Graph<T>{
 		map = new HashMap<>();
 	}
 
+	public Graph(List<Edge<T>> edges){
+		this();
+		addEdge(edges);
+	}
+
+	public void addEdge(List<Edge<T>> edges){
+		Iterator<Edge<T>> it = edges.iterator();	
+		while(it.hasNext()){
+			addEdge(it.next());
+		}
+
+	}
+
+
 	public void addEdge(T t1, T t2, int weight){
 		Vertex v1 = getVertex(t1);
 		Vertex v2 = getVertex(t2);
