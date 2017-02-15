@@ -4,18 +4,23 @@ import Lab3Help.*;
 public class Lab3{
 	public static void main(String[] args){
 		Lab3File f = new Lab3File();
+		//List<BStop> stops;
+		List<BLineTable> lines;
 		try{
-			//List<BStop> stops = f.readStops(args[0]);
-			List<BLineTable> lines = f.readLines(args[0]);
+			//stops = f.readStops(args[0]);
+			lines = f.readLines(args[1]);
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		Grap<String> graph = new Graph(edgeAdapter(lines));
+		Graph<String> graph = new Graph(edgeAdapter(lines));
+		Path<String> path = new Dijkstra(graph);
+		path.computePath(args[2],args[3]);
+		System.out.printf("Shortest path: %d", path.getPathLength());
 		
 	}
 
-	private List<Edge> edgeAdapter(List<BLineTable> lines){
+	private static List<Edge> edgeAdapter(List<BLineTable> lines){
 		Iterator<BLineTable> it = lines.iterator();
 		List<Edge> edges = new LinkedList();
 		while(it.hasNext()){
