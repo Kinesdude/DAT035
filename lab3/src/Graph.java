@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-//dont forget to compare Edges it between same vertices and different weights
+//dont forget to compare Edges if between same vertices and different weights
 
 public class Graph<T>{
 
@@ -23,7 +23,6 @@ public class Graph<T>{
 		}
 
 	}
-
 
 	public void addEdge(T t1, T t2, int weight){
 		Vertex v1 = getVertex(t1);
@@ -49,7 +48,7 @@ public class Graph<T>{
 	}
 
 	public void resetVertexValues(){
-		Iterator<Vertex> it= map.values().iterator();
+		Iterator<Vertex> it = map.values().iterator();
 		while(it.hasNext()){
 			//--Debugger
 			//System.out.println("Resetting value in graph: ");
