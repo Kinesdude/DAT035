@@ -1,4 +1,0 @@
-Tänk på att adjacent list ska ha en given initial size  
-Ersättning av edges? Vad händer om en edge sätts som har högre än föregående?
-
-Vertex wrapper i dijkstra!
